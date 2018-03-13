@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Барбершоп</title>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&amp;subset=cyrillic" rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/style.css">
   </head>
   <body>
@@ -55,6 +57,7 @@
 		 	</ul>
 		 </section>
 
+		 <div class="index-columns">
 		 <section class="news">
 		 	<h2>Новости</h2>
 		 	<ul class="news-list">
@@ -82,10 +85,12 @@
 		 		</a>
 		 	</figure>
 		 	<button class="button gallery-button gallery-button-back" type="button">Назад</button>
-		 	<button type="button gallery-button gallery-button-next">Вперёд</button>
+		 	<button class="button gallery-button gallery-button-back" type="button">Вперёд</button>
 		 	
 		 </section>
+		 </div>
 
+		 <div class="index-columns">
 		 <section class="contacts">
 		 	<h2>Контактная информация</h2>
 		 	<p>
@@ -130,10 +135,11 @@
 		 		</button>
 		 	</form>
 		 </section>
+		 </div>
 	  
 	</main>
 	
-	<footer class="class="main-footer">
+	<footer class="main-footer">
 		<p class="footer-contacts">
 			Барбершоп «Бородинский»<br>
         	Адрес: г. Санкт-Петербург, Б. Конюшенная, д. 19/8<br>
@@ -156,7 +162,7 @@
 			</ul>
 		</div>
 
-		<p>
+		<p class="footer-copyright">
 			Разработано:
 			<a class="button" href="https://htmlacademy.ru">HTML Academy</a>
 		</p>
@@ -186,7 +192,7 @@
 					<a class="restore" href="#">Я забыл пароль</a>
 				</label>
 			</p>
-			<button type="submit">Войти</button>
+			<button class="button" type="submit">Войти</button>
 		</form>
 		<button class="modal-close" type="button">
 			Закрыть
