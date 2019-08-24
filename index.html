@@ -194,26 +194,26 @@
       </p>
     </div>
   </footer>
-  <!-- Модальные -->
+  <!-- Модалка "Логин" -->
   <section class="modal modal-login">
     <h2>Личный кабинет</h2>
-    <p>Введите, пожалуйста, свой логин и пароль</p>
+    <p class="modal-description">Введите, пожалуйста, свой логин и пароль</p>
     <form class="login-form" action="https://echo.htmlacademy.ru" method="post">
       <p>
-        <label for="login-name" aria-label="Введите логин"></label>
-        <input class="login-icon-user" type="text" name="login-name" id="login-name" placeholder="Логин" required>
+        <label class="visually-hidden" for="user-login">Логин</label>
+        <input class="login-icon-user" id="user-login" type="text" name="login" placeholder="Логин">
       </p>
       <p>
-        <label for="password-name" aria-label="Введите пароль"></label>
-        <input class="login-icon-password" type="password" name="password-name" id="password-name" placeholder="Пароль" required>
+        <label class="visually-hidden" for="user-password">Пароль</label>
+        <input class="login-icon-password" id="user-password" type="password" name="password" placeholder="Пароль">
       </p>
-      <p class="login-password-info">
+      <p class="login-help">
         <label class="login-checkbox">
-          <input class="visually-hidden" type="checkbox" name="remember">
-          <span class="checkbox-indicator"><span>
-              Запомните меня
-              <a class="restore" href="#">Я забыл пароль</a>
+          <input type="checkbox" name="remember" class="visually-hidden">
+          <span class="checkbox-indicator"></span>
+          Запомните меня
         </label>
+        <a class="restore" href="#">Я забыл пароль!</a>
       </p>
       <button class="button" type="submit">Войти</button>
     </form>
@@ -221,6 +221,7 @@
       Закрыть
     </button>
   </section>
+  <!-- Модалка "Как до нас добраться" -->
   <section class="modal modal-map">
     <h2 class="visually-hidden">Как до нас добраться</h2>
     <p class="card-wrap">
@@ -230,6 +231,7 @@
       Закрыть
     </button>
   </section>
+  <script src="js/index.js"></script>>
 </body>
 
 </html>
