@@ -78,9 +78,9 @@ a {
   text-decoration: none;
 }
 
-* {
+/** {
   outline: 1px solid gray;
-}
+}*/
 
 .container {
   width: 960px;
