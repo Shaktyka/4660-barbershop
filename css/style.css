@@ -53,7 +53,7 @@ body {
           box-sizing: border-box;
 }
 
-.visually-hidden,
+.visually-hidden:not(:focus):not(:active),
 input[type="checkbox"].visually-hidden,
 input[type="radio"].visually-hidden {
   position: absolute;
@@ -91,6 +91,10 @@ a {
 /* ФОРМЫ */
 
 .button {
+  display: inline-block;
+  margin-right: 16px;
+  padding: 10px 30px;
+
   font: inherit;
 
   text-align: center;
@@ -106,6 +110,13 @@ a {
 .button:focus,
 .button:active {
   background-color: #663d15;
+}
+
+.button.disabled,
+.button:disabled {
+  cursor: default;
+  opacity: 0.5;
+  background-color: #000000;
 }
 
 /* ХЕДЕР */
@@ -170,15 +181,17 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  flex-wrap: wrap;
   margin: 0;
   padding: 0;
   width: 620px;
   list-style: none;
 }
 
-.site-nav-item a {
+/*.site-nav-item a {
+  display: block;
   color: #ffffff;
-}
+}*/
 
 .site-nav-item a:hover,
 .site-nav-item a:focus {
@@ -191,18 +204,50 @@ a {
   display: flex;
   margin: 0;
   padding: 0;
-  width: 140px;
+  max-width: 140px;
 
   list-style: none;
 }
 
-.login-link {
+.site-navigation a,
+.user-navigation a {
+  display: block;
+  padding: 25px 20px;
+
+  vertical-align: middle;
   color: #ffffff;
+}
+
+.user-navigation .login-link {
+  position: relative;
+  padding-left: 50px;
 }
 
 .login-link:hover,
 .login-link:focus {
   background-color: #242424;
+}
+
+.login-link::before {
+  position: absolute;
+  content: "";
+  top: 27px;
+  left: 24px;
+
+  width: 16px;
+  height: 18px;
+
+  background-image: url("../img/login.svg");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+
+  opacity: 0.3;
+}
+
+.login-link:hover::before,
+.login-link:focus::before,
+.login-link:active::before {
+  opacity: 1;
 }
 
 /* ПРЕИМУЩЕСТВА*/
@@ -233,9 +278,28 @@ a {
 }
 
 .feature-title {
+  position: relative;
+
   margin: 0;
+  margin-bottom: 60px;
+
   font-size: 30px;
   line-height: 42px;
+}
+
+.feature-title::after {
+  position: absolute;
+  content: "";
+  bottom: -30px;
+  left: 50%;
+
+  width: 20px;
+  height: 20px;
+  margin-left: -10px;
+
+  background-color: #ffffff;
+
+  transform: rotate(45deg);
 }
 
 .feature-item {
@@ -244,7 +308,7 @@ a {
 }
 
 .feature-desc {
-  margin: 0;
+  margin: 0 10px;
   padding: 0;
 }
 
@@ -269,9 +333,11 @@ a {
   margin-bottom: 35px;
 
   background-color: #f8f5f2;
-  background-image: url("../img/grain-back.png");
-  background-position: 0 0;
-  background-repeat: repeat;
+  background-image:
+    url("../img/line-vert.png"),
+    url("../img/grain-back.png");
+  background-position: center, 0 0;
+  background-repeat: no-repeat, repeat;
  }
 
 .news {
@@ -280,14 +346,21 @@ a {
 
 .news-header {
   margin: 0;
+  margin-bottom: 25px;
+
   font-size: 30px;
   line-height: 42px;
  }
 
 .news-list {
   margin: 0;
+  margin-bottom: 25px;
   padding: 0;
   list-style: none;
+}
+
+.news-item {
+  margin-bottom: 25px;
 }
 
 .news-text {
@@ -304,14 +377,22 @@ a {
   width: 300px;
 }
 
+.gallery-container {
+  position: relative;
+
+  height: 260px;
+}
+
 .gallery-header {
   margin: 0;
+  margin-bottom: 25px;
   padding: 0;
 }
 
 .gallery-content {
+  height: 180px;
   margin: 0;
-  padding: 0;
+
   background-color: #cccccc;
   border: 7px solid #ffffff;
 }
@@ -322,6 +403,28 @@ a {
   display: flex;
 }
 
+.gallery-foto {
+  width: 286px;
+  height: 164px;
+}
+
+.gallery-button {
+  position: absolute;
+  box-sizing: border-box;
+  bottom: 0;
+
+  width: 140px;
+  margin: 0;
+}
+
+.gallery-button-back {
+  left: 0;
+}
+
+.gallery-button-next {
+  right: 0;
+}
+
 /* КОНТАКТЫ */
 
 .contacts {
@@ -330,11 +433,12 @@ a {
 
 .contacts-header {
   margin: 0;
+  margin-bottom: 25px;
 }
 
-.contacts-address,
-.contacts-time {
+.contacts-item {
   margin: 0;
+  margin-bottom: 25px;
 }
 
 /*ЗАПИСАТЬСЯ */
@@ -343,19 +447,42 @@ a {
   width: 300px;
 }
 
-.appointment-title {
+.appointment-header {
   margin: 0;
+  margin-bottom: 25px;
 }
 
 .appointment-info {
   margin: 0;
+  margin-bottom: 15px;
+}
+
+.appointment-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .appointment-item {
+  width: 140px;
   margin: 0;
+  margin-bottom: 10px;
+}
+
+.appointment-item label {
+  display: block;
+  margin-bottom: 9px;
+  margin-left: 15px;
 }
 
 .appointment-item input {
+  box-sizing: border-box;
+  width: 140px;
+  padding-top: 8px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 7px;
+
   font: inherit;
 
   background-color: transparent;
@@ -364,6 +491,13 @@ a {
 
 .appointment-item input:focus {
   border-color: #663d15;
+}
+
+.appointment .button {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  margin-right: 0;
 }
 
 /* СТРАНИЦА КАТАЛОГА */
@@ -465,7 +599,9 @@ footer .container {
 }
 
 .social-text {
+  display: block;
   margin: 0;
+  margin-bottom: 15px;
 }
 
 .social-list {
@@ -478,20 +614,50 @@ footer .container {
           flex-direction: row;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin: 0;
+  justify-content: space-between;
+  width: 145px;
+  margin: 0 auto;
   padding: 0;
   list-style: none;
 }
 
 .social-button {
-  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 43px;
+  height: 43px;
+
+  background-color: #000000;
+}
+
+.social-button:hover,
+.social-button:focus {
+  background-color: #ffffff;
+}
+
+.social-button:hover path,
+.social-button:focus path {
+  fill: #000000;
 }
 
 .footer-copyright {
-  width: 150px;
+  width: 174px;
   margin: 0;
   margin-left: auto;
   text-align: center;
+}
+
+.footer-copyright b {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.footer-copyright .button {
+  display: block;
+  margin-right: 0;
+
+  font-family: inherit;
 }
 
 .footer-copyright .button:hover,
