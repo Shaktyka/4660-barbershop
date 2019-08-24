@@ -75,6 +75,10 @@ a {
   text-decoration: none;
 }
 
+* {
+  outline: 1px solid gray;
+}
+
 /* ФОРМЫ */
 
 .button {
@@ -133,7 +137,6 @@ a {
   color: #ffffff;
 }
 
-
 .user-navigation a:hover,
 .user-navigation a:focus {
   background-color: #242424;
@@ -151,13 +154,19 @@ a {
   list-style: none;
 }
 
-.feature-item h3 {
+.feature-title {
+  margin: 0;
   font-size: 30px;
   line-height: 42px;
 }
 
 .feature-item {
 	text-align: center;
+}
+
+.feature-desc {
+  margin: 0;
+  padding: 0;
 }
 
 /* НОВОСТИ */
@@ -171,27 +180,68 @@ a {
   background-repeat: repeat;
  }
 
-.index-columns h2 {
+.news-header {
+  margin: 0;
   font-size: 30px;
   line-height: 42px;
  }
 
 .news-list {
+  margin: 0;
+  padding: 0;
   list-style: none;
 }
 
-.news-item time {
+.news-text {
+  margin: 0;
+}
+
+.news time {
   text-transform: none;
 }
 
 /* ГАЛЕРЕЯ */
 
+.gallery-header {
+  margin: 0;
+  padding: 0;
+}
+
 .gallery-content {
+  margin: 0;
+  padding: 0;
   background-color: #cccccc;
   border: 7px solid #ffffff;
 }
 
-/* КОНТАКТЫ И ЗАПИСАТЬСЯ */
+.gallery-photo-link {
+  display: flex;
+}
+
+/* КОНТАКТЫ */
+
+.contacts-header {
+  margin: 0;
+}
+
+.contacts-address,
+.contacts-time {
+  margin: 0;
+}
+
+/*ЗАПИСАТЬСЯ */
+
+.appointment-title {
+  margin: 0;
+}
+
+.appointment-info {
+  margin: 0;
+}
+
+.appointment-item {
+  margin: 0;
+}
 
 .appointment-item input {
   font: inherit;
@@ -266,13 +316,17 @@ a {
   background-repeat: repeat;
 }
 
-.footer-contacts a {
+.footer-contacts {
+  margin: 0;
+}
+
+.footer-contacts-link {
   color: #ffffff;
   text-decoration: underline;
 }
 
-.footer-contacts a:hover,
-.footer-contacts a:focus {
+.footer-contacts-link:hover,
+.footer-contacts-link:focus {
   text-decoration: none;
 }
 
@@ -280,7 +334,16 @@ a {
   text-align: center;
 }
 
-.footer-social ul {
+.social-text {
+  margin: 0;
+}
+
+.social-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
   list-style: none;
 }
 
@@ -289,6 +352,7 @@ a {
 }
 
 .footer-copyright {
+  margin: 0;
   text-align: center;
 }
 
