@@ -1,4 +1,35 @@
-﻿body {
+/* ШРИФТЫ */
+
+/* cyrillic */
+@font-face {
+  font-family: 'PT Sans Narrow';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    local('PT Sans Narrow'),
+    local('PTSans-Narrow'),
+    url('../fonts/ptsansnarrow.woff2') format('woff2'),
+    url('../fonts/ptsansnarrow.woff') format('woff');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'PT Sans Narrow';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src:
+    local('PT Sans Narrow Bold'),
+    local('PTSans-NarrowBold'),
+    url('../fonts/ptsansnarrowbold.woff2') format('woff2'),
+    url('../fonts/ptsansnarrowbold.woff') format('woff');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* БАЗОВЫЕ СТИЛИ */
+
+body {
   margin: 0;
   padding: 0;
 
@@ -15,13 +46,34 @@
   background-repeat: no-repeat;
 }
 
+.visually-hidden,
+input[type="checkbox"].visually-hidden,
+input[type="radio"].visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  -webkit-clip-path: inset(100%);
+        clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 .inner-page {
   color: #000000;
 
   background-color: #f8f5f2;
   background-image: url("../img/grain-back.png");
   background-position: 0 0;
-  background-repeat: repeat; 
+  background-repeat: repeat;
 }
 
 a {
@@ -46,7 +98,10 @@ a {
 	background-color: #663d15;
 }
 
+/* НАВИГАЦИЯ */
+
 .main-navigation {
+  display: flex;
   font-size: 16px;
   line-height: 20px;
   color: #ffffff;
@@ -56,8 +111,11 @@ a {
 
 .site-navigation-list,
 .user-navigation {
+  display: flex;
+  margin: 0;
+  padding: 0;
   list-style: none;
-} 
+}
 
 .site-navigation-list a,
 .user-navigation a {
@@ -74,6 +132,12 @@ a {
 /* ПРЕИМУЩЕСТВА*/
 
 .features-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: flex-start;
+  margin: 0;
+  padding: 0;
   list-style: none;
 }
 
@@ -117,7 +181,7 @@ a {
   border: 7px solid #ffffff;
 }
 
-/* КОНТАКРЫ И ЗАПИСАТЬСЯ */
+/* КОНТАКТЫ И ЗАПИСАТЬСЯ */
 
 .appointment-item input {
   font: inherit;
@@ -177,7 +241,7 @@ a {
 
 .filter-input:disabled + label {
   color: #000000;
-  
+
   opacity: 0.5;
 }
 
@@ -231,7 +295,7 @@ a {
   background-color: #f8f5f2;
   background-image: url("../img/grain-back.png");
   background-position: 0 0;
-  background-repeat: repeat; 
+  background-repeat: repeat;
 }
 
 .modal h2 {
