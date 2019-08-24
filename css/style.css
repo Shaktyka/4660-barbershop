@@ -1,3 +1,5 @@
+/* https://autoprefixer.github.io/ru/ */
+
 /* ШРИФТЫ */
 
 /* cyrillic */
@@ -47,7 +49,8 @@ body {
 }
 
 *, *::before, *::after {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .visually-hidden,
@@ -79,6 +82,12 @@ a {
   outline: 1px solid gray;
 }
 
+.container {
+  width: 960px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
 /* ФОРМЫ */
 
 .button {
@@ -96,59 +105,128 @@ a {
 .button:hover,
 .button:focus,
 .button:active {
-	background-color: #663d15;
+  background-color: #663d15;
+}
+
+/* ХЕДЕР */
+
+.main-header {
+  width: 100%;
+  margin-bottom: 75px;
+}
+
+.main-header-logo {
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+  width: 371px;
+  height: 155px;
 }
 
 /* НАВИГАЦИЯ */
 
 .main-navigation {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+
   font-size: 16px;
   line-height: 20px;
   color: #ffffff;
+}
 
+.main-navigation-wrap {
+  width: 100%;
+  margin-bottom: 60px;
   background-color: #000000;
 }
 
-.site-navigation-list {
+.main-navigation-wrap .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.site-navigation {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin: 0;
   padding: 0;
+  width: 620px;
   list-style: none;
 }
 
-.site-navigation-list a {
+.site-nav-item a {
   color: #ffffff;
 }
 
-.site-navigation-list a:hover,
-.site-navigation-list a:focus {
+.site-nav-item a:hover,
+.site-nav-item a:focus {
   background-color: #242424;
 }
 
 .user-navigation {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin: 0;
   padding: 0;
+  width: 140px;
+
   list-style: none;
 }
 
-.user-navigation a {
+.login-link {
   color: #ffffff;
 }
 
-.user-navigation a:hover,
-.user-navigation a:focus {
+.login-link:hover,
+.login-link:focus {
   background-color: #242424;
 }
 
 /* ПРЕИМУЩЕСТВА*/
 
+.features {
+  margin-bottom: 80px;
+}
+
 .features-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  align-items: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -161,7 +239,8 @@ a {
 }
 
 .feature-item {
-	text-align: center;
+  width: 300px;
+  text-align: center;
 }
 
 .feature-desc {
@@ -172,13 +251,32 @@ a {
 /* НОВОСТИ */
 
 .index-columns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   color: #000000;
+
+  padding: 50px 80px;
+  margin-bottom: 35px;
 
   background-color: #f8f5f2;
   background-image: url("../img/grain-back.png");
   background-position: 0 0;
   background-repeat: repeat;
  }
+
+.news {
+  width: 380px;
+}
 
 .news-header {
   margin: 0;
@@ -202,6 +300,10 @@ a {
 
 /* ГАЛЕРЕЯ */
 
+.gallery {
+  width: 300px;
+}
+
 .gallery-header {
   margin: 0;
   padding: 0;
@@ -215,10 +317,16 @@ a {
 }
 
 .gallery-photo-link {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 /* КОНТАКТЫ */
+
+.contacts {
+  width: 380px;
+}
 
 .contacts-header {
   margin: 0;
@@ -230,6 +338,10 @@ a {
 }
 
 /*ЗАПИСАТЬСЯ */
+
+.appointment {
+  width: 300px;
+}
 
 .appointment-title {
   margin: 0;
@@ -308,6 +420,9 @@ a {
 /* ФУТЕР */
 
 .main-footer {
+  margin-top: 65px;
+  padding: 60px 0;
+
   color: #ffffff;
 
   background-color: #222222;
@@ -316,8 +431,22 @@ a {
   background-repeat: repeat;
 }
 
+footer .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
 .footer-contacts {
+  width: 320px;
   margin: 0;
+  margin-right: 80px;
 }
 
 .footer-contacts-link {
@@ -331,6 +460,7 @@ a {
 }
 
 .footer-social {
+  width: 145px;
   text-align: center;
 }
 
@@ -339,9 +469,15 @@ a {
 }
 
 .social-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -352,7 +488,9 @@ a {
 }
 
 .footer-copyright {
+  width: 150px;
   margin: 0;
+  margin-left: auto;
   text-align: center;
 }
 
@@ -376,8 +514,8 @@ a {
 }
 
 .modal h2 {
-	font-size: 30px
-	line-height: 42px;
+  font-size: 30px;
+  line-height: 42px;
 }
 
 .login-form input[type="text"],
@@ -400,13 +538,13 @@ a {
 }
 
 .restore {
-	color: #000000;
-	text-decoration: underline;
+  color: #000000;
+  text-decoration: underline;
 }
 
 .restore a:hover,
 .restore a:focus {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 /* КАТАЛОГ */
