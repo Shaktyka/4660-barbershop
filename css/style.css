@@ -67,18 +67,11 @@ img {
   height: auto;
 }
 
-.inner-page {
-  color: #000000;
-
-  background-color: #f8f5f2;
-  background-image: url("../img/grain-back.png");
-  background-position: 0 0;
-  background-repeat: repeat;
-}
-
 a {
   text-decoration: none;
 }
+
+/* ФОРМЫ */
 
 .button {
   font: inherit;
@@ -109,7 +102,22 @@ a {
   background-color: #000000;
 }
 
-.site-navigation-list,
+.site-navigation-list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-navigation-list a {
+  color: #ffffff;
+}
+
+.site-navigation-list a:hover,
+.site-navigation-list a:focus {
+  background-color: #242424;
+}
+
 .user-navigation {
   display: flex;
   margin: 0;
@@ -117,13 +125,11 @@ a {
   list-style: none;
 }
 
-.site-navigation-list a,
 .user-navigation a {
   color: #ffffff;
 }
 
-.site-navigation-list a:hover,
-.site-navigation-list a:focus,
+
 .user-navigation a:hover,
 .user-navigation a:focus {
   background-color: #242424;
@@ -289,7 +295,10 @@ a {
   background-color: #ffffff;
 }
 
+/* МОДАЛКА */
+
 .modal {
+  display: none;
   color: #000000;
 
   background-color: #f8f5f2;
@@ -330,4 +339,15 @@ a {
 .restore a:hover,
 .restore a:focus {
 	text-decoration: none;
+}
+
+/* КАТАЛОГ */
+
+.inner-page {
+  color: #000000;
+
+  background-color: #f8f5f2;
+  background-image: url("../img/grain-back.png");
+  background-position: 0 0;
+  background-repeat: repeat;
 }
