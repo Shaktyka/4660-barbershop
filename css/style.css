@@ -920,3 +920,31 @@ footer .container {
   width: 100%;
   margin-right: 0;
 }
+
+.modal-map {
+  top: 50%;
+  left: 50%;
+
+  width: 780px;
+  height: 574px;
+  margin-top: -280px;
+  margin-left: -390px;
+
+  border: 7px solid white;
+}
+
+.modal-map p {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+  margin: 0;
+}
+
+.modal-map iframe {
+  position: relative;
+  z-index: 2;
+
+  border: none;
+}
