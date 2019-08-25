@@ -525,8 +525,14 @@ a {
   line-height: 42px;
 }
 
-.breadcrumbs ul {
+.breadcrumbs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .breadcrumbs a {
@@ -1002,13 +1008,47 @@ fieldset {
   padding: 0;
 }
 
+.catalog-item {
+  background-color: #f8f8f8;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.catalog-item:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.catalog-item a {
+  color: #000000;
+}
+
 .catalog h3 {
   margin: 0;
+  font-size: 14px;
+  line-height: 18px;
 }
 
 .catalog-item-image {
   margin: 0;
 }
+
+.catalog-category {
+  text-transform: none;
+}
+
+.catalog-item-price b {
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+
+  background-color: #e5e5e5;
+}
+
+.catalog-item-price .button {
+  line-height: 20px;
+  color: #ffffff;
+}
+
+/* Пагинация */
 
 .pagination-list {
   display: flex;
@@ -1018,6 +1058,32 @@ fieldset {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.pag-item a {
+  color: #ffffff;
+
+  background-color: #000000;
+}
+
+.pag-item a:hover,
+.pag-item a:focus,
+.pag-item a:active {
+  background-color: #663d15;
+}
+
+.pag-item-current a {
+  color: #000000;
+
+  background-color: #ffffff;
+}
+
+.pag-item-current a:hover,
+.pag-item-current a:focus,
+.pag-item-current a:active {
+  color: #000000;
+
+  background-color: #ffffff;
 }
 
 /* ПРОДУКТ */
