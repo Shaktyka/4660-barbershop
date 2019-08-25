@@ -681,6 +681,7 @@ footer .container {
 /* МОДАЛКА */
 
 .modal {
+  display: none;
   position: fixed;
   color: #000000;
 
@@ -737,9 +738,11 @@ footer .container {
 
 /* ФОРМА ВХОДА */
 
-.modal-login {
-  display: none;
+.modal-show {
+  display: block;
+}
 
+.modal-login {
   top: 120px;
   left: 50%;
 
