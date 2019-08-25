@@ -973,7 +973,44 @@ footer .container {
 
 /* ХЛЕБНЫЕ КРОШКИ */
 
-.bc-list {
+.breadcrumbs-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Каталог фильтр */
+
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+.filter-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.catalog-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.catalog h3 {
+  margin: 0;
+}
+
+.catalog-item-image {
+  margin: 0;
+}
+
+.pagination-list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
