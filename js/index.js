@@ -1,4 +1,5 @@
 const loginLink = document.querySelector(`.login-link`);
+
 const loginPopup = document.querySelector(`.modal-login`);
 const loginClose = loginPopup.querySelector(`.modal-close`);
 const loginSubmit = loginPopup.querySelector(`.login-submit`);
@@ -69,4 +70,3 @@ loginForm.addEventListener(`submit`, loginFormSubmitHandler);
 
 loginClose.addEventListener(`click`, loginCloseClickHandler);
 loginLink.addEventListener(`click`, loginLinkClickHandler);
-
