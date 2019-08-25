@@ -23,6 +23,7 @@ try {
 const loginCloseClickHandler = (evt) => {
   evt.preventDefault();
   loginPopup.classList.remove(`modal-show`);
+  loginPopup.classList.remove(`modal-error`);
 };
 
 // Обработчик клика по кнопке входа
@@ -40,8 +41,11 @@ const loginLinkClickHandler = (evt) => {
 
 // Обработчик сабмита формы
 const loginFormSubmitHandler = (evt) => {
-  if (!login.value || !password.value) {
+  if (!loginField.value || !passwordField.value) {
     evt.preventDefault();
+    loginPopup.classList.remove(`modal-error`);
+    loginPopup.offsetWidth = loginPopup.offsetWidth;
+    loginPopup.classList.add(`modal-error`);
     console.log(`Нужно ввести логин и пароль`);
   } else {
     if (isStorageSupport) {
@@ -56,6 +60,7 @@ window.addEventListener(`keydown`, (evt) => {
     evt.preventDefault();
     if (loginPopup.classList.contains(`modal-show`)) {
       loginPopup.classList.remove(`modal-show`);
+      loginPopup.classList.remove(`modal-error`);
     }
   }
 });
