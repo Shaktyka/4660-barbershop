@@ -685,17 +685,6 @@ footer .container {
   background-color: #ffffff;
 }
 
-/* КАТАЛОГ */
-
-.inner-page {
-  color: #000000;
-
-  background-color: #f8f5f2;
-  background-image: url("../img/grain-back.png");
-  background-position: 0 0;
-  background-repeat: repeat;
-}
-
 /* АНИМАЦИЯ ДЛЯ МОДАЛКИ */
 
 @keyframes bounce {
@@ -965,4 +954,74 @@ footer .container {
   z-index: 2;
 
   border: none;
+}
+
+/* КАТАЛОГ */
+
+.inner-page {
+  color: #000000;
+
+  background-color: #f8f5f2;
+  background-image: url("../img/grain-back.png");
+  background-position: 0 0;
+  background-repeat: repeat;
+}
+
+.page-title {
+  margin: 0;
+}
+
+/* ХЛЕБНЫЕ КРОШКИ */
+
+.bc-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ПРОДУКТ */
+
+.product-photo-full {
+  display: flex;
+  padding: 0;
+}
+
+.product-photo-preview {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.product-availability {
+  margin: 0;
+}
+
+.product-articul {
+  margin: 0;
+}
+
+.product-text {
+  margin: 0;
+}
+
+.catalog-item-price {
+  margin: 0;
+}
+
+.product-info h3 {
+  margin: 0;
+}
+
+.catalog-item-info {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
