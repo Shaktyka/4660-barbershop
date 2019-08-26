@@ -518,12 +518,50 @@ a {
   margin-right: 0;
 }
 
+
 /* СТРАНИЦА КАТАЛОГА */
+
+.inner-page {
+  color: #000000;
+
+  background-color: #f8f5f2;
+  background-image: url("../img/grain-back.png");
+  background-position: 0 0;
+  background-repeat: repeat;
+}
+
+.inner-page .main-header {
+  margin-bottom: 50px;
+  background-color: #000000;
+}
+
+.inner-page .main-navigation {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.inner-page .main-header-logo {
+  order: 0;
+
+  width: 111px;
+  height: 24px;
+  padding: 23px 20px;
+}
+
+.inner-page .user-navigation {
+  margin-left: auto;
+}
 
 .page-title {
   font-size: 30px;
   line-height: 42px;
 }
+
+.inner-page .page-title {
+  margin-bottom: 15px;
+}
+
+/* Хлебные крошки */
 
 .breadcrumbs {
   display: flex;
@@ -532,6 +570,7 @@ a {
 
   list-style: none;
   margin: 0;
+  margin-bottom: 50px;
   padding: 0;
 }
 
@@ -548,9 +587,21 @@ a {
   color: #aba9a7;
 }
 
-/* ФИЛЬТР */
+/* Фильтр */
+
+.filters {
+  width: 180px;
+}
+
+.filter-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
 .filter fieldset {
+  margin: 0;
+  padding: 0;
   border: none;
 }
 
@@ -573,6 +624,70 @@ a {
   color: #000000;
 
   opacity: 0.5;
+}
+
+/* Блок Каталога */
+
+.catalog {
+  width: 700px;
+}
+
+.catalog-columns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.catalog-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.catalog-item {
+  width: 220px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+
+  background-color: #f8f8f8;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.catalog-item:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.catalog-item a {
+  color: #000000;
+}
+
+.catalog h3 {
+  margin: 0;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.catalog-item-image {
+  margin: 0;
+}
+
+.catalog-category {
+  text-transform: none;
+}
+
+.catalog-item-price b {
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+
+  background-color: #e5e5e5;
+}
+
+.catalog-item-price .button {
+  line-height: 20px;
+  color: #ffffff;
 }
 
 /* ФУТЕР */
@@ -962,90 +1077,8 @@ footer .container {
   border: none;
 }
 
-/* КАТАЛОГ */
-
-.inner-page {
-  color: #000000;
-
-  background-color: #f8f5f2;
-  background-image: url("../img/grain-back.png");
-  background-position: 0 0;
-  background-repeat: repeat;
-}
-
 .page-title {
   margin: 0;
-}
-
-/* ХЛЕБНЫЕ КРОШКИ */
-
-.breadcrumbs-list {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-/* Каталог фильтр */
-
-fieldset {
-  margin: 0;
-  padding: 0;
-}
-
-.filter-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.catalog-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.catalog-item {
-  background-color: #f8f8f8;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.catalog-item:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.catalog-item a {
-  color: #000000;
-}
-
-.catalog h3 {
-  margin: 0;
-  font-size: 14px;
-  line-height: 18px;
-}
-
-.catalog-item-image {
-  margin: 0;
-}
-
-.catalog-category {
-  text-transform: none;
-}
-
-.catalog-item-price b {
-  font-size: 14px;
-  line-height: 20px;
-  text-align: center;
-
-  background-color: #e5e5e5;
-}
-
-.catalog-item-price .button {
-  line-height: 20px;
-  color: #ffffff;
 }
 
 /* Пагинация */

@@ -12,13 +12,11 @@
 
 <body class="inner-page">
   <header class="main-header">
-    <nav class="main-navigation">
+    <nav class="main-navigation container">
       <a class="main-header-logo" href="index.html">
         <img src="img/logo.png" width="111" height="24" alt="Логотип Барбершопа Бородинский">
       </a>
-      <div class="main-navigation-wrap">
-        <div class="container">
-          <ul class="site-navigation">
+      <ul class="site-navigation">
             <li class="site-nav-item">
               <a href="info.html">Информация</a>
             </li>
@@ -34,14 +32,12 @@
             <li class="site-nav-item">
               <a href="contacts.html">Контакты</a>
             </li>
-          </ul>
-          <ul class="user-navigation">
+      </ul>
+      <ul class="user-navigation">
             <li>
               <a class="login-link" href="login.html" title="Вход">Вход</a>
             </li>
-          </ul>
-        </div>
-      </div>
+      </ul>
     </nav>
   </header>
   <main class="container">
@@ -55,9 +51,12 @@
       </li>
       <li class="breadcrumbs-current">Средства для ухода</li>
     </ul>
-    <section class="filters">
+    
+    <div class="catalog-columns">
+      <section class="filters">
       <h2 class="visually-hidden">Фильтр товаров</h2>
       <form class="filter" action="https://echo.htmlacademy.ru" method="get">
+        
         <fieldset>
           <legend>Производители:</legend>
           <ul class="filter-list">
@@ -103,6 +102,7 @@
             </li>
           </ul>
         </fieldset>
+
         <fieldset>
           <legend>Группы товаров:</legend>
           <ul class="filter-list">
@@ -126,12 +126,14 @@
             </li>
           </ul>
         </fieldset>
+
         <button class="button filter-button" class="button" type="submit">
           Показать
         </button>
       </form>
-    </section>
-    <section class="catalog">
+      </section>
+
+      <section class="catalog">
       <h2 class="visually-hidden">Список средств для ухода</h2>
       <ul class="catalog-list">
         <li class="catalog-item">
@@ -147,7 +149,6 @@
           <p class="catalog-item-price">
             <b>2900 р</b>
             <a class="button" href="#">Купить</a>
-          </p>
           </p>
         <li class="catalog-item">
           <a href="catalog-item.html">
@@ -225,7 +226,8 @@
           </p>
         </li>
       </ul>
-    </section>
+      </section>
+    </div>
     <div class="pagination">
       <ul class="pagination-list">
         <li class="pag-item">
