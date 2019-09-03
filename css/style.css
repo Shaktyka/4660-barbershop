@@ -1132,14 +1132,25 @@ footer .container {
 
 /* ПРОДУКТ */
 
+.product-photos {
+  width: 460px;
+}
+
+.product-info {
+  width: 390px;
+}
+
 .product-photo-full {
   display: flex;
+  margin: 0;
   padding: 0;
 }
 
 .product-photo-preview {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
   flex-wrap: wrap;
 
   list-style: none;
@@ -1172,5 +1183,3 @@ footer .container {
   margin: 0;
   padding: 0;
 }
-
-/* Страница товара */
