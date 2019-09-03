@@ -541,10 +541,11 @@ a {
 }
 
 .inner-page .main-header-logo {
+  box-sizing: border-box;
   order: 0;
 
-  width: 111px;
-  height: 24px;
+  width: 151px;
+  height: 70px;
   padding: 23px 20px;
 }
 
@@ -707,6 +708,10 @@ a {
   background-image: url("../img/pattern-dark.jpg");
   background-position: 0 0;
   background-repeat: repeat;
+}
+
+.inner-page .main-footer {
+  margin-top: 45px;
 }
 
 footer .container {
@@ -1095,6 +1100,7 @@ footer .container {
 
   list-style: none;
   margin: 0;
+  margin-bottom: 25px;
   padding: 0;
 }
 
@@ -1166,3 +1172,5 @@ footer .container {
   margin: 0;
   padding: 0;
 }
+
+/* Страница товара */
