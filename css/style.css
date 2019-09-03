@@ -567,12 +567,37 @@ a {
 .breadcrumbs {
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
   flex-wrap: wrap;
 
   list-style: none;
+  padding: 0;
   margin: 0;
   margin-bottom: 50px;
-  padding: 0;
+}
+
+.breadcrumbs li {
+  position: relative;
+
+  margin-right: 42px;
+}
+
+.breadcrumbs li:last-child {
+  margin-right: 0;
+}
+
+.breadcrumbs li::after {
+  content: "";
+
+  position: absolute;
+  top: 7px;
+  right: -25px;
+
+  width: 8px;
+  height: 8px;
+
+  background-color: #000000;
+  transform: rotate(45deg);
 }
 
 .breadcrumbs a {
@@ -584,8 +609,12 @@ a {
   text-decoration: underline;
 }
 
-.bc-current a {
+.breadcrumbs-current {
   color: #aba9a7;
+}
+
+.breadcrumbs-current::after {
+  display: none;
 }
 
 /* Фильтр */
@@ -594,26 +623,43 @@ a {
   width: 180px;
 }
 
-.filter-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
 .filter fieldset {
   margin: 0;
+  margin-bottom: 30px;
   padding: 0;
   border: none;
 }
 
+.filter fieldset:first-child {
+  margin-bottom: 35px;
+}
+
 .filter legend {
+  margin-bottom: 26px;
+
   font-size: 24px;
   line-height: 30px;
 }
 
 .filter ul {
+  margin: 0;
+  padding: 0;
   list-style: none;
   line-height: 18px;
+}
+
+.filter-option {
+  margin-bottom: 19px;
+  padding-left: 45px;
+}
+
+.filter-option label {
+  position: relative;
+
+  display: block;
+
+  cursor: pointer;
+  user-select: none;
 }
 
 .filter-input:hover + label,
@@ -621,10 +667,65 @@ a {
   color: #663d15;
 }
 
+.filter-input-checkbox + label::before {
+  content: "";
+  position: absolute;
+  left: -42px;
+  top: 0;
+
+  width: 16px;
+  height: 16px;
+
+  border: 2px solid #000000;
+}
+
+.filter-input-checkbox:checked + label::after {
+  content: "";
+
+  position: absolute;
+  top: 2px;
+  left: -40px;
+
+  width: 12px;
+  height: 12px;
+
+  background-image: url("../img/cross.svg");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+
+.filter-input-radio + label::before {
+  content: "";
+
+  position: absolute;
+  left: -42px;
+  top: -1px;
+
+  width: 16px;
+  height: 16px;
+  
+  border: 2px solid #000000;
+  border-radius: 50%;
+}
+
 .filter-input:disabled + label {
   color: #000000;
 
   opacity: 0.5;
+}
+
+.filter-input-radio:checked + label::after {
+  content: "";
+
+  position: absolute;
+  top: 3px;
+  left: -38px;
+
+  width: 8px;
+  height: 8px;
+
+  background-color: #000000;
+  border-radius: 50%;
 }
 
 /* Блок Каталога */
@@ -666,24 +767,43 @@ a {
 }
 
 .catalog-item a {
+  display: flex;
+  flex-direction: column;
   color: #000000;
 }
 
 .catalog h3 {
-  margin: 0;
+  order: 1;
+  margin-top: 17px;
+  margin-bottom: 12px;
+  margin-left: 16px;
+  margin-right: 15px;
+
   font-size: 14px;
   line-height: 18px;
 }
 
 .catalog-item-image {
+  width: 220px;
+  height: 165px;
   margin: 0;
 }
 
 .catalog-category {
+  display: block;
   text-transform: none;
 }
 
+.catalog-item-price {
+  display: flex;
+  margin: 15px;
+  margin-top: 0;
+}
+
 .catalog-item-price b {
+  width: 112px;
+  padding: 13px 25px 11px;
+
   font-size: 14px;
   line-height: 20px;
   text-align: center;
@@ -692,6 +812,10 @@ a {
 }
 
 .catalog-item-price .button {
+  width: 76px;
+  padding: 13px 18px 11px;
+  margin-right: 0;
+
   line-height: 20px;
   color: #ffffff;
 }
@@ -1104,7 +1228,17 @@ footer .container {
   padding: 0;
 }
 
+.pag-item {
+  margin-right: 5px;
+}
+
+.pag-item:last-child {
+  margin-right: 0;
+}
+
 .pag-item a {
+  display: block;
+  padding: 10px 19px;
   color: #ffffff;
 
   background-color: #000000;
@@ -1116,15 +1250,15 @@ footer .container {
   background-color: #663d15;
 }
 
-.pag-item-current a {
+.pagination-item-current a {
   color: #000000;
 
   background-color: #ffffff;
 }
 
-.pag-item-current a:hover,
-.pag-item-current a:focus,
-.pag-item-current a:active {
+.pagination-item-current a:hover,
+.pagination-item-current a:focus,
+.pagination-item-current a:active {
   color: #000000;
 
   background-color: #ffffff;
@@ -1167,10 +1301,6 @@ footer .container {
 }
 
 .product-text {
-  margin: 0;
-}
-
-.catalog-item-price {
   margin: 0;
 }
 
