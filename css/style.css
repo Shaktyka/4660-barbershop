@@ -613,6 +613,10 @@ a {
   color: #aba9a7;
 }
 
+.breadcrumbs-current:hover {
+  text-decoration: none;
+}
+
 .breadcrumbs-current::after {
   display: none;
 }
