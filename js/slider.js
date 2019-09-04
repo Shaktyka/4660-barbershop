@@ -66,9 +66,13 @@ const showSlide = (slideData) => {
 // Обработчик нажатия на кнопку "Вперёд"
 const nextBtnClickHandler = (evt) => {
   evt.preventDefault();
+  backBtn.disabled = ``;
+  // Повесить обработчик на кнопку "Вперёд"
+
   const currSlideIndex = PHOTOS.findIndex((element) => {
     return element.id === +currentSlide.id;
   });
+
   if (currSlideIndex === PHOTOS.length - 1) {
     nextBtn.disabled = `disabled`;
   } else {
@@ -89,8 +93,8 @@ nextBtn.addEventListener(`click`, nextBtnClickHandler);
 // Стартовая отрисовка слайдера
 const initSlider = () => {
   const slideEl = createElement(getSlide(PHOTOS[0]));
-  renderSlide(contentBlock, slideEl);
   currentSlide = slideEl;
+  renderSlide(contentBlock, slideEl);
   backBtn.disabled = `disabled`;
   nextBtn.disabled = ``;
 };
