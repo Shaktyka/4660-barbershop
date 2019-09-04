@@ -3,34 +3,36 @@ const backBtn = gallery.querySelector(`.gallery-button-back`);
 const nextBtn = gallery.querySelector(`.gallery-button-next`);
 const contentBlock = gallery.querySelector(`.gallery-content`);
 
+let currentSlide = null;
+
 const PHOTOS = [
   {
   	id: 101,
-  	title: `Салон`,
+  	title: `Интерьер первого зала`,
   	img: `salon-1.jpg`,
   	href: `#`
   },
   {
   	id: 102,
-  	title: `Салон`,
+  	title: `Интерьер второго зала`,
   	img: `salon-2.jpg`,
   	href: `#`
   },
   {
   	id: 103,
-  	title: `Салон`,
+  	title: `Клиент с фирменным пивом`,
   	img: `salon-3.jpg`,
   	href: `#`
   },
   {
   	id: 104,
-  	title: `Салон`,
+  	title: `Мастер за работой`,
   	img: `salon-4.jpg`,
   	href: `#`
   },
   {
   	id: 105,
-  	title: `Салон`,
+  	title: `Инструменты`,
   	img: `salon-5.jpg`,
   	href: `#`
   }
@@ -49,11 +51,33 @@ const getSlide = ({id, title, img, href}) => {
   </a>`.trim();
 };
 
-const nextBtnClickHandler = (evt) => {
-  evt.preventDefault();
-
+// Отрисовка слайда
+const renderSlide = (block, el) => {
+  block.innerHTML = ``;
+  block.appendChild(el);
 };
 
+const showSlide = (slideData) => {
+  const slideEl = createElement(getSlide(slideData));
+  currentSlide = slideEl;
+  renderSlide(contentBlock, slideEl);
+};
+
+// Обработчик нажатия на кнопку "Вперёд"
+const nextBtnClickHandler = (evt) => {
+  evt.preventDefault();
+  const currSlideIndex = PHOTOS.findIndex((element) => {
+    return element.id === +currentSlide.id;
+  });
+  if (currSlideIndex === PHOTOS.length - 1) {
+    nextBtn.disabled = `disabled`;
+  } else {
+    const nextSlideData = PHOTOS[currSlideIndex + 1];
+    showSlide(nextSlideData);
+  }
+};
+
+// Обработчик нажатия на кнопку "Назад"
 const backBtnClickHandler = (evt) => {
   evt.preventDefault();
 
@@ -62,16 +86,11 @@ const backBtnClickHandler = (evt) => {
 backBtn.addEventListener(`click`, backBtnClickHandler);
 nextBtn.addEventListener(`click`, nextBtnClickHandler);
 
-// Отрисовка слайда
-const renderSlide = (block, el) => {
-  block.innerHtml = ``;
-  block.appendChild(el);
-};
-
 // Стартовая отрисовка слайдера
 const initSlider = () => {
   const slideEl = createElement(getSlide(PHOTOS[0]));
   renderSlide(contentBlock, slideEl);
+  currentSlide = slideEl;
   backBtn.disabled = `disabled`;
   nextBtn.disabled = ``;
 };
