@@ -1,5 +1,6 @@
 const SCREEN_CARDS_AMOUNT = 6;
 const cardsBlock = document.querySelector(`.catalog-list`);
+const paginationBlock = document.querySelector(`.pagination-list`);
 
 // Рендеринг элемента из разметки
 const createElement = (string) => {
@@ -27,7 +28,7 @@ const getCardTemplate = ({id, category, name, price, catalogPicture}) => {
   </li>`.trim();
 };
 
-// Рендерим карточки на страницу 
+// Рендерим карточки на страницу
 const renderCards = (block, cardsArr) => {
   if (cardsArr.length > 0) {
     const fragment = document.createDocumentFragment();
@@ -42,3 +43,28 @@ const renderCards = (block, cardsArr) => {
 };
 
 renderCards(cardsBlock, cards.slice(0, SCREEN_CARDS_AMOUNT));
+
+// Возвращает шаблон элемента пагинации
+const getPaginationTemplate = (index, isCurrent = false) => {
+  return `<li class="pag-item ${isCurrent ? `pagination-item-current` : ``}">
+    <a ${isCurrent ? `` : `href="?pag=${index}"`}>${index}</a>
+  </li>`.trim();
+};
+
+// Рендерим список пагинации
+const renderPagination = () => {
+  //Ссчитаем, сколько элементов в пагинации отрисовать
+  const paginationElemsAmount = (cards.length === 0 || cards.length === SCREEN_CARDS_AMOUNT) ? `false` : Math.ceil(cards.length / SCREEN_CARDS_AMOUNT);
+  // Рендерим пагинацию
+  if (paginationElemsAmount !== false) {
+    const fragment = document.createDocumentFragment();
+    for (let i = 0; i < paginationElemsAmount; i++) {
+      const isCurrent = i === 0;
+      const paginationElement = createElement(getPaginationTemplate(i + 1, isCurrent));
+      fragment.appendChild(paginationElement);
+    }
+    paginationBlock.appendChild(fragment);
+  }
+};
+
+renderPagination();
