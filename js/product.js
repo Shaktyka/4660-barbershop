@@ -1,6 +1,15 @@
 // Реализуем отрисовку нажатого товара по id, полученному из параметров ссылки
 const productBlock = document.querySelector(`.catalog-columns`);
 const pageTitle = document.querySelector(`.page-title`);
+const bcCatElem = document.querySelector(`.product-category`);
+const currBc = document.querySelector(`.breadcrumbs-current`);
+
+// Получаем id товара из параметров запроса
+const get = (name) => {
+  if(name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search)) {
+    return decodeURIComponent(name[1]);
+  }
+};
 
 // Рендеринг элемента из разметки
 const createElement = (string) => {
@@ -42,23 +51,20 @@ const getProductInfo = ({id, inStock, articul, text, productInfo, price}) => {
   </section>`.trim();
 };
 
-// Получаем id товара из параметров запроса
-const get = (name) => {
-   if(name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search)) {
-      return decodeURIComponent(name[1]);
-   }
-};
-
 // Рендерим описание продукта
 const renderProductDescription = (block, id) => {
   // Отрендерить заголовок страницы
+  const productData = cards[id - 1];
+  const productName = `${productData.category} «${productData.name}»`;
+  pageTitle.innerHTML = productName;
   // Хлебные крошки (категория и название)
+  bcCatElem.innerHTML = Categories[get(`cat`)];
+  currBc.innerHTML = productName;
   // Рендеринг контента описания товара
-  const photoSection = createElement(getProductPhoto(cards[id - 1]));
-  const infoSection = createElement(getProductInfo(cards[id - 1]));
+  const photoSection = createElement(getProductPhoto(productData));
+  const infoSection = createElement(getProductInfo(productData));
   block.appendChild(photoSection);
   block.appendChild(infoSection);
 };
 
-// pageTitle.innerHTML = ``;
 renderProductDescription(productBlock, get(`item`));
