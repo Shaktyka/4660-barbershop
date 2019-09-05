@@ -8,12 +8,12 @@ const createElement = (string) => {
   return div.firstChild;
 };
 
-const getProductPhoto = ({id}) => {
+const getProductPhoto = ({id, category, name}) => {
   console.log(id);
   return `<section class="product-photos">
         <h2 class="visually-hidden">Изображения товара</h2>
         <p class="product-photo-full">
-          <img src="img/item-1-big.jpg" width="460" height="498" alt="Набор для путешествий «Baxter of California»">
+          <img src="img/item-1-big.jpg" width="460" height="498" alt="${category} «${name}»">
         </p>
         <ul class="product-photo-preview">
           <li>
