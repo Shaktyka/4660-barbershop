@@ -7,6 +7,7 @@ const mapClose = mapPopup.querySelector(`.modal-close`);
 const mapLinkClickHandler = (evt) => {
   evt.preventDefault();
   mapPopup.classList.add(`modal-show`);
+  window.addEventListener(`keydown`, windowKeydownHandler);
 };
 
 const mapCloseClickHandler = (evt) => {
@@ -23,7 +24,6 @@ const windowKeydownHandler = (evt) => {
   }
 };
 
-window.addEventListener(`keydown`, windowKeydownHandler);
 mapClose.addEventListener(`click`, mapCloseClickHandler);
 
 if (mapLink) {
