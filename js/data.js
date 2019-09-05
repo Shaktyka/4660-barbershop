@@ -1,3 +1,10 @@
+// Категории
+const Categories = {
+  care: `Средства для ухода`,
+  shavings: `Бритвенные принадлежности`,
+  accessories: `Аксессуары`
+};
+
 let cards = [
   {
     id: 1,

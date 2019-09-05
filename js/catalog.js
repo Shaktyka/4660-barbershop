@@ -1,7 +1,26 @@
 const SCREEN_CARDS_AMOUNT = 6;
 const cardsBlock = document.querySelector(`.catalog-list`);
 const paginationBlock = document.querySelector(`.pagination-list`);
+const currentBC = document.querySelector(`.breadcrumbs-current`);
 // cards = [];
+
+// Сообщение, что товаров нет
+const noCardsMessage = `<li class="no-products-message">К сожалению, ничего не нашлось. Попробуйте посмотреть другие наши предложения.</li>`; 
+
+// Получем значение свойства из параметров запроса
+const get = (name) => {
+   if(name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search)) {
+      return decodeURIComponent(name[1]);
+   }
+};
+
+// Рендерим текущий Breadcrumb
+const setCurrentBreadcrumb = () => {
+  const cat = Categories[get(`cat`)];
+  currentBC.innerHTML = cat;
+};
+
+setCurrentBreadcrumb();
 
 // Рендеринг элемента из разметки
 const createElement = (string) => {
@@ -9,9 +28,6 @@ const createElement = (string) => {
   div.innerHTML = string;
   return div.firstChild;
 };
-
-// Сообщение, что товаров нет
-const noCardsMessage = `<li class="no-products-message">К сожалению, ничего не нашлось. Попробуйте посмотреть другие наши предложения.</li>`; 
 
 // Рендерим строку карточки с данными
 const getCardTemplate = ({id, category, name, price, catalogPicture}) => {
