@@ -47,12 +47,29 @@ const loginFormSubmitHandler = (evt) => {
     loginPopup.classList.remove(`modal-error`);
     loginPopup.offsetWidth = loginPopup.offsetWidth;
     loginPopup.classList.add(`modal-error`);
-    console.log(`Нужно ввести логин и пароль`);
+    toastr.options = {
+      "positionClass": "toast-bottom-right",
+      "preventDuplicates": true,
+      "showDuration": "300",
+      "hideDuration": "1000",
+      "timeOut": "5000",
+      "extendedTimeOut": "1000",
+      "showEasing": "swing",
+      "hideEasing": "linear",
+      "showMethod": "fadeIn",
+      "hideMethod": "fadeOut"
+    };
+    toastr[`info`](`Нужно ввести логин и пароль`, `Упс!`);
   } else {
     if (isStorageSupport) {
       localStorage.setItem(`login`, loginField.value);
     }
-    // loginPopup.classList.remove(`modal-show`);
+    // Отправляем форму
+    // upload(new FormData(form), (response) => {
+    //   loginPopup.classList.remove(`modal-show`);
+    //   console.log(`sent`);
+    // });
+    // evt.preventDefault();
   }
 };
 
