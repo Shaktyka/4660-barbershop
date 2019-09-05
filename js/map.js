@@ -25,6 +25,9 @@ const windowKeydownHandler = (evt) => {
 
 window.addEventListener(`keydown`, windowKeydownHandler);
 mapClose.addEventListener(`click`, mapCloseClickHandler);
-mapLink.addEventListener(`click`, mapLinkClickHandler);
 
-footerContactsLink.addEventListener(`click`, loginLinkClickHandler);
+if (mapLink) {
+  mapLink.addEventListener(`click`, mapLinkClickHandler);
+}
+
+footerContactsLink.addEventListener(`click`, mapLinkClickHandler);
