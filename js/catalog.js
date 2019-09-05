@@ -5,7 +5,7 @@ const currentBC = document.querySelector(`.breadcrumbs-current`);
 // cards = [];
 
 // Сообщение, что товаров нет
-const noCardsMessage = `<li class="no-products-message">К сожалению, ничего не нашлось. Попробуйте посмотреть другие наши предложения.</li>`; 
+const noCardsMessage = `<li class="no-products-message">К сожалению, ничего не нашлось. Попробуйте посмотреть другие наши предложения.</li>`;
 
 // Получем значение свойства из параметров запроса
 const get = (name) => {
@@ -16,8 +16,7 @@ const get = (name) => {
 
 // Рендерим текущий Breadcrumb
 const setCurrentBreadcrumb = () => {
-  const cat = Categories[get(`cat`)];
-  currentBC.innerHTML = cat;
+  currentBC.innerHTML = Categories[get(`cat`)];
 };
 
 setCurrentBreadcrumb();
@@ -32,7 +31,7 @@ const createElement = (string) => {
 // Рендерим строку карточки с данными
 const getCardTemplate = ({id, category, name, price, catalogPicture}) => {
   return `<li class="catalog-item" data-id="${id}">
-    <a href="catalog-item.html?item=${id}">
+    <a href="catalog-item.html?cat=${get(`cat`)}&item=${id}">
       <h3>
         <span class="catalog-category">${category}</span>
         <span class="catalog-item-title">«${name}»</span>

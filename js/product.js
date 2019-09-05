@@ -1,5 +1,6 @@
 // Реализуем отрисовку нажатого товара по id, полученному из параметров ссылки
 const productBlock = document.querySelector(`.catalog-columns`);
+const pageTitle = document.querySelector(`.page-title`);
 
 // Рендеринг элемента из разметки
 const createElement = (string) => {
@@ -49,11 +50,15 @@ const get = (name) => {
 };
 
 // Рендерим описание продукта
-const renderProduct = (block, id) => {
+const renderProductDescription = (block, id) => {
+  // Отрендерить заголовок страницы
+  // Хлебные крошки (категория и название)
+  // Рендеринг контента описания товара
   const photoSection = createElement(getProductPhoto(cards[id - 1]));
   const infoSection = createElement(getProductInfo(cards[id - 1]));
   block.appendChild(photoSection);
   block.appendChild(infoSection);
 };
 
-renderProduct(productBlock, get(`item`));
+// pageTitle.innerHTML = ``;
+renderProductDescription(productBlock, get(`item`));
