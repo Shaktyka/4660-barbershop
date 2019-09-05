@@ -1,6 +1,7 @@
 const SCREEN_CARDS_AMOUNT = 6;
 const cardsBlock = document.querySelector(`.catalog-list`);
 const paginationBlock = document.querySelector(`.pagination-list`);
+// cards = [];
 
 // Рендеринг элемента из разметки
 const createElement = (string) => {
@@ -8,6 +9,9 @@ const createElement = (string) => {
   div.innerHTML = string;
   return div.firstChild;
 };
+
+// Сообщение, что товаров нет
+const noCardsMessage = `<li class="no-products-message">К сожалению, ничего не нашлось. Попробуйте посмотреть другие наши предложения.</li>`; 
 
 // Рендерим строку карточки с данными
 const getCardTemplate = ({id, category, name, price, catalogPicture}) => {
@@ -38,7 +42,7 @@ const renderCards = (block, cardsArr) => {
     });
     block.appendChild(fragment);
   } else {
-    // рендерим сообщение, что товаров нет
+    block.appendChild(createElement(noCardsMessage));
   }
 };
 

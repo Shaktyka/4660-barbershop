@@ -1733,3 +1733,7 @@ footer .container {
 .short-text {
   padding-right: 80px;
 }
+
+.no-products-message {
+  color: #bd362f;
+}

@@ -1,4 +1,4 @@
-const cards = [
+let cards = [
   {
     id: 1,
     group: `Средства для ухода`,
