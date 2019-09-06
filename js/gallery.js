@@ -4,7 +4,7 @@ const nextBtn = gallery.querySelector(`.gallery-button-next`);
 const contentBlock = gallery.querySelector(`.gallery-content`);
 
 let currentSlide = null;
-let currentSlideIndex = null;
+let currentSlideIndex = 0;
 
 const PHOTOS = [
   {
@@ -58,6 +58,7 @@ const renderSlide = (block, el) => {
   block.appendChild(el);
 };
 
+// Рендерим слайд
 const showSlide = (slideData) => {
   const slideEl = createElement(getSlide(slideData));
   currentSlide = slideEl;
@@ -106,10 +107,7 @@ nextBtn.addEventListener(`click`, nextBtnClickHandler);
 
 // Стартовая отрисовка слайдера
 const initSlider = () => {
-  const slideEl = createElement(getSlide(PHOTOS[0]));
-  currentSlide = slideEl;
-  currentSlideIndex = 0; // индекс в лоб
-  renderSlide(contentBlock, slideEl);
+  showSlide(PHOTOS[currentSlideIndex]);
   backBtn.disabled = `disabled`;
   nextBtn.disabled = ``;
 };
