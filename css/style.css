@@ -1737,3 +1737,12 @@ footer .container {
 .no-products-message {
   color: #bd362f;
 }
+
+.product-info a {
+  color: inherit;
+}
+
+.product-info a:hover,
+.product-info a:focus {
+  text-decoration: underline;
+}

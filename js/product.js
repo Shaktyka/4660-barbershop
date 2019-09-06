@@ -18,6 +18,28 @@ const createElement = (string) => {
   return div.firstChild;
 };
 
+// Получаем ключ объекта по его значению
+const getObjectKey = (obj, value) => {
+  let key = null;
+  for (let val in obj) {
+    if (obj[val] === value) {
+      key = val;
+      break;
+    }
+  }
+  return key;
+};
+
+const getNoProductMessage = (catObj) => {
+  return `<div>
+    <p class="no-products-message">Этот продукт не найден, но у нас есть много других.</p>
+    <p>Выберите категорию:</p>
+    <ul class="product-info">
+      ${Object.values(catObj).map((item) => `<li><a href="catalog.html?cat=${getObjectKey(Categories, item)}">${item}</a></li>`).join(``)}
+    </ul>
+  </div>`.trim();
+};
+
 const getProductPhoto = ({id, category, name, bigPicture, previews}) => {
   return `<section class="product-photos" data-id="${id}">
     <h2 class="visually-hidden">Изображения товара</h2>
@@ -52,19 +74,26 @@ const getProductInfo = ({id, inStock, articul, text, productInfo, price}) => {
 };
 
 // Рендерим описание продукта
-const renderProductDescription = (block, id) => {
-  // Отрендерить заголовок страницы
+const renderProductDescription = (block, category, id) => {
   const productData = cards[id - 1];
-  const productName = `${productData.category} «${productData.name}»`;
-  pageTitle.innerHTML = productName;
-  // Хлебные крошки (категория и название)
-  bcCatElem.innerHTML = Categories[get(`cat`)];
-  currBc.innerHTML = productName;
-  // Рендеринг контента описания товара
-  const photoSection = createElement(getProductPhoto(productData));
-  const infoSection = createElement(getProductInfo(productData));
-  block.appendChild(photoSection);
-  block.appendChild(infoSection);
+  if (category && productData) {
+    const productName = `${productData.category} «${productData.name}»`;
+    pageTitle.innerHTML = productName;
+
+    // Хлебные крошки (категория и название)
+    bcCatElem.innerHTML = category;
+    currBc.innerHTML = productName;
+
+    // Рендеринг контента описания товара
+    const photoSection = createElement(getProductPhoto(productData));
+    const infoSection = createElement(getProductInfo(productData));
+    block.appendChild(photoSection);
+    block.appendChild(infoSection);
+  } else {
+    // Добавляем строку, что продукт не найден
+    block.appendChild(createElement(getNoProductMessage(Categories)));
+  }
 };
 
-renderProductDescription(productBlock, get(`item`));
+// Рендерим контент страницы
+renderProductDescription(productBlock, Categories[get(`cat`)], get(`item`));
