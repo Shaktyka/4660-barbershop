@@ -64,6 +64,23 @@ const showSlide = (slideData) => {
   renderSlide(contentBlock, slideEl);
 };
 
+// Перключение слайдов
+const changeSlide = (button) => {
+  if (button === backBtn) {
+    currentSlideIndex--;
+    if (currentSlideIndex === 0) {
+      backBtn.disabled = `disabled`;
+    }
+  } else {
+    currentSlideIndex++;
+    if (currentSlideIndex === PHOTOS.length - 1) {
+      nextBtn.disabled = `disabled`;
+    }
+  }
+  const nextSlideData = PHOTOS[currentSlideIndex];
+  showSlide(nextSlideData);
+};
+
 // Обработчик нажатия на кнопку "Вперёд"
 const nextBtnClickHandler = (evt) => {
   evt.preventDefault();
@@ -72,14 +89,7 @@ const nextBtnClickHandler = (evt) => {
   if (backBtn.disabled) {
     backBtn.disabled = ``;
   }
-
-  currentSlideIndex++;
-
-  if (currentSlideIndex === PHOTOS.length - 1) {
-    nextBtn.disabled = `disabled`;
-  }
-  const nextSlideData = PHOTOS[currentSlideIndex];
-  showSlide(nextSlideData);
+  changeSlide (evt.target);
 };
 
 // Обработчик нажатия на кнопку "Назад"
@@ -88,14 +98,7 @@ const backBtnClickHandler = (evt) => {
   if (nextBtn.disabled) {
     nextBtn.disabled = ``;
   }
-
-  currentSlideIndex--;
-
-  if (currentSlideIndex === 0) {
-    backBtn.disabled = `disabled`;
-  }
-  const nextSlideData = PHOTOS[currentSlideIndex];
-  showSlide(nextSlideData);
+  changeSlide (evt.target);
 };
 
 backBtn.addEventListener(`click`, backBtnClickHandler);
