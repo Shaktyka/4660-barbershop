@@ -48,7 +48,7 @@ const loginFormSubmitHandler = (evt) => {
     loginPopup.offsetWidth = loginPopup.offsetWidth;
     loginPopup.classList.add(`modal-error`);
     toastr.options = {
-      "positionClass": "toast-bottom-right",
+      "positionClass": "toast-top-right",
       "preventDuplicates": true,
       "showDuration": "300",
       "hideDuration": "1000",
@@ -65,11 +65,13 @@ const loginFormSubmitHandler = (evt) => {
       localStorage.setItem(`login`, loginField.value);
     }
     // Отправляем форму
-    // upload(new FormData(form), (response) => {
-    //   loginPopup.classList.remove(`modal-show`);
-    //   console.log(`sent`);
-    // });
-    // evt.preventDefault();
+    evt.preventDefault();
+    const data = new FormData(loginForm);
+    upload(data, (response) => {
+      loginPopup.classList.remove(`modal-show`);
+      toastr[`success`](`Данные успешно отправлены`, `УСПЕХ!`);
+    });
+    loginPopup.classList.remove(`modal-show`);
   }
 };
 
