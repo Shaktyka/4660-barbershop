@@ -4,6 +4,7 @@ const nextBtn = gallery.querySelector(`.gallery-button-next`);
 const contentBlock = gallery.querySelector(`.gallery-content`);
 
 let currentSlide = null;
+let currentSlideIndex = null;
 
 const PHOTOS = [
   {
@@ -66,25 +67,35 @@ const showSlide = (slideData) => {
 // Обработчик нажатия на кнопку "Вперёд"
 const nextBtnClickHandler = (evt) => {
   evt.preventDefault();
-  backBtn.disabled = ``;
-  // Повесить обработчик на кнопку "Вперёд"
 
-  const currSlideIndex = PHOTOS.findIndex((element) => {
-    return element.id === +currentSlide.id;
-  });
-
-  if (currSlideIndex === PHOTOS.length - 1) {
-    nextBtn.disabled = `disabled`;
-  } else {
-    const nextSlideData = PHOTOS[currSlideIndex + 1];
-    showSlide(nextSlideData);
+  // Разлочиваем кнопку "Назад"
+  if (backBtn.disabled) {
+    backBtn.disabled = ``;
   }
+
+  currentSlideIndex++;
+
+  if (currentSlideIndex === PHOTOS.length - 1) {
+    nextBtn.disabled = `disabled`;
+  }
+  const nextSlideData = PHOTOS[currentSlideIndex];
+  showSlide(nextSlideData);
 };
 
 // Обработчик нажатия на кнопку "Назад"
 const backBtnClickHandler = (evt) => {
   evt.preventDefault();
+  if (nextBtn.disabled) {
+    nextBtn.disabled = ``;
+  }
 
+  currentSlideIndex--;
+
+  if (currentSlideIndex === 0) {
+    backBtn.disabled = `disabled`;
+  }
+  const nextSlideData = PHOTOS[currentSlideIndex];
+  showSlide(nextSlideData);
 };
 
 backBtn.addEventListener(`click`, backBtnClickHandler);
@@ -94,6 +105,7 @@ nextBtn.addEventListener(`click`, nextBtnClickHandler);
 const initSlider = () => {
   const slideEl = createElement(getSlide(PHOTOS[0]));
   currentSlide = slideEl;
+  currentSlideIndex = 0; // индекс в лоб
   renderSlide(contentBlock, slideEl);
   backBtn.disabled = `disabled`;
   nextBtn.disabled = ``;

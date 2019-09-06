@@ -59,7 +59,7 @@ const loginFormSubmitHandler = (evt) => {
       "showMethod": "fadeIn",
       "hideMethod": "fadeOut"
     };
-    toastr[`info`](`Нужно ввести логин и пароль`, `Упс!`);
+    toastr[`info`](`Пожалуйста, введите логин и пароль`, `Упс!`);
   } else {
     if (isStorageSupport) {
       localStorage.setItem(`login`, loginField.value);
