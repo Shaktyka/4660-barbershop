@@ -1,8 +1,10 @@
 // Реализуем отрисовку нажатого товара по id, полученному из параметров ссылки
-const productBlock = document.querySelector(`.catalog-columns`);
-const pageTitle = document.querySelector(`.page-title`);
-const bcCatElem = document.querySelector(`.product-category`);
-const currBc = document.querySelector(`.breadcrumbs-current`);
+const main = document.querySelector(`main`);
+const pageTitle = main.querySelector(`.page-title`);
+const productBlock = main.querySelector(`.catalog-columns`);
+// const bcCatElem = document.querySelector(`.product-category`);
+// const breadcrumbsBlock = document.querySelector(`.breadcrumbs`);
+// const currBc = document.querySelector(`.breadcrumbs-current`);
 
 // Получаем id товара из параметров запроса
 const get = (name) => {
@@ -30,6 +32,10 @@ const getObjectKey = (obj, value) => {
   return key;
 };
 
+// Разметка контейнера для описания товара
+const prodBlockTemplate = `<div class="catalog-columns"></div>`;
+
+// Возвращает сообщение, когда не удалось получить товар
 const getNoProductMessage = (catObj) => {
   return `<div>
     <p class="no-products-message">Этот продукт не найден, но у нас есть много других.</p>
@@ -40,6 +46,7 @@ const getNoProductMessage = (catObj) => {
   </div>`.trim();
 };
 
+// Возвращает разметку блока с фото продукта
 const getProductPhoto = ({id, category, name, bigPicture, previews}) => {
   return `<section class="product-photos" data-id="${id}">
     <h2 class="visually-hidden">Изображения товара</h2>
@@ -54,6 +61,7 @@ const getProductPhoto = ({id, category, name, bigPicture, previews}) => {
   </section>`.trim();
 };
 
+// Возвращает разметку описания продукта
 const getProductInfo = ({id, inStock, articul, text, productInfo, price}) => {
   return `<section class="product-info" data-id="${id}">
     <h2 class="visually-hidden">Описание товара</h2>
@@ -73,27 +81,54 @@ const getProductInfo = ({id, inStock, articul, text, productInfo, price}) => {
   </section>`.trim();
 };
 
-// Рендерим описание продукта
-const renderProductDescription = (block, category, id) => {
-  const productData = cards[id - 1];
-  if (category && productData) {
-    const productName = `${productData.category} «${productData.name}»`;
-    pageTitle.innerHTML = productName;
+// Разметка хлебных крошек
+const breadcrumbsTemplate = (category, product) => {
+  return `<ul class="breadcrumbs">
+    <li>
+      <a href="index.html">Главная</a>
+    </li>
+    <li>
+      <a href="catalog.html">Магазин</a>
+    </li>
+    <li>
+      <a href="catalog.html?cat=${getObjectKey(Categories, category)}">${category}</a>
+    </li>
+    <li class="breadcrumbs-current">
+      ${product}
+    </li>
+  </ul>`.trim();
+};
 
-    // Хлебные крошки (категория и название)
-    bcCatElem.innerHTML = category;
-    currBc.innerHTML = productName;
+// Начало
+const renderProductContent = () => {
+  const prodCategory = Categories[get(`cat`)]; // получаем категорию
+  const prodId = get(`item`); // получаем id товара
+  const prodData = cards[prodId - 1]; // получаем данные товара
 
-    // Рендеринг контента описания товара
-    const photoSection = createElement(getProductPhoto(productData));
-    const infoSection = createElement(getProductInfo(productData));
-    block.appendChild(photoSection);
-    block.appendChild(infoSection);
+  if (prodCategory && prodData) {
+    // Название страницы
+    const prodName = `${prodData.category} «${prodData.name}»`;
+    pageTitle.innerHTML = prodName;
+
+    // Хлебные крошки
+    main.appendChild(createElement(breadcrumbsTemplate(prodCategory, prodName)));
+
+    // Контейнер для контента
+    const prodBlock = createElement(prodBlockTemplate);
+    // Описание продукта: 2 блока
+    const photoSection = createElement(getProductPhoto(prodData));
+    const infoSection = createElement(getProductInfo(prodData));
+    prodBlock.appendChild(photoSection);
+    prodBlock.appendChild(infoSection);
+    main.appendChild(prodBlock);
   } else {
-    // Добавляем строку, что продукт не найден
-    block.appendChild(createElement(getNoProductMessage(Categories)));
+    // Контейнер для контента
+    const prodBlock = createElement(prodBlockTemplate);
+    // Предложение посмотреть другие продукты
+    prodBlock.appendChild(createElement(getNoProductMessage(Categories)));
+    main.appendChild(prodBlock);
   }
 };
 
-// Рендерим контент страницы
-renderProductDescription(productBlock, Categories[get(`cat`)], get(`item`));
+// Рендерит контент страницы
+renderProductContent();
