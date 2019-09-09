@@ -3,6 +3,12 @@ const backBtn = gallery.querySelector(`.gallery-button-back`);
 const nextBtn = gallery.querySelector(`.gallery-button-next`);
 const contentBlock = gallery.querySelector(`.gallery-content`);
 
+// Полноразмерное изображение
+const fullPhoto = document.querySelector(`.modal-photo`);
+const fullImage = fullPhoto.querySelector(`img`);
+const photoClose = fullPhoto.querySelector(`.modal-close`);
+
+// Текущий слайд
 let currentSlide = null;
 let currentSlideIndex = 0;
 
@@ -58,10 +64,19 @@ const renderSlide = (block, el) => {
   block.appendChild(el);
 };
 
+// Обработчик клика по слайду
+const slideElClickHandler = (evt) => {
+  evt.preventDefault();
+  console.log(currentSlide);
+  fullImage.src = currentSlide.querySelector(`img`).src;
+  fullPhoto.classList.add(`modal-show`);
+};
+
 // Рендерим слайд
 const showSlide = (slideData) => {
   const slideEl = createElement(getSlide(slideData));
   currentSlide = slideEl;
+  slideEl.addEventListener(`click`, slideElClickHandler);
   renderSlide(contentBlock, slideEl);
 };
 
