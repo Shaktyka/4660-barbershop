@@ -1375,11 +1375,15 @@ footer .container {
   left: 50%;
 
   width: 780px;
-  height: 574px;
   margin-top: -280px;
   margin-left: -390px;
 
   border: 7px solid white;
+}
+
+.modal-photo p {
+  display: flex;
+  margin: 0;
 }
 
 /* Пагинация */
