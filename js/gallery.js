@@ -64,12 +64,29 @@
     block.appendChild(el);
   };
 
+  // Обработчик нажатия на кнопку-крестик full-photo
+  const photoCloseClickHandler = (evt) => {
+    evt.preventDefault();
+    fullPhoto.classList.remove(`modal-show`);
+    photoClose.removeEventListener(`click`, photoCloseClickHandler);
+  };
+
+  // Обработчик нажатий на клавиши
+  const documentKeyDownHandler = (evt) => {
+    if (evt.keyCode === 27) {
+      fullPhoto.classList.remove(`modal-show`);
+      photoClose.removeEventListener(`click`, photoCloseClickHandler);
+      document.removeEventListener(`keydown`, documentKeyDownHandler);
+    }
+  };
+
   // Обработчик клика по слайду
   const slideElClickHandler = (evt) => {
     evt.preventDefault();
-    console.log(currentSlide);
     fullImage.src = currentSlide.querySelector(`img`).src;
     fullPhoto.classList.add(`modal-show`);
+    photoClose.addEventListener(`click`, photoCloseClickHandler);
+    document.addEventListener(`keydown`, documentKeyDownHandler);
   };
 
   // Рендерим слайд
