@@ -1,4 +1,4 @@
-// (function () {
+(function () {
   window.upload = function (data, successHandler) {
     const URL = `https://echo.htmlacademy.ru`;
 
@@ -12,4 +12,4 @@
     xhr.open(`GET`, URL);
     xhr.send(data);
   };
-// })();
+})();
