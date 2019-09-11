@@ -54,7 +54,7 @@
 
   const getSlide = ({ id, title, img, href }) => {
     return `<a class="gallery-photo-link" id="${id}" href="${href}">
-    <img class="gallery-foto" src="img/${img}" width="286" height="164" alt="${title}">
+    <img class="gallery-foto" src="img/${img}" width="285" height="165" alt="${title}">
   </a>`.trim();
   };
 
