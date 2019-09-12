@@ -1336,7 +1336,21 @@ footer .container {
 .login-form .button {
   width: 100%;
   margin-right: 0;
+  margin-bottom: 10px;
 }
+
+.login__signin-link {
+  display: block;
+  text-align: center;
+  text-decoration: underline;
+  color: #000000;
+}
+
+.login__signin-link:hover {
+  text-decoration: none;
+}
+
+/* Модалка Карта */
 
 .modal-map {
   top: 50%;
