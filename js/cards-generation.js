@@ -60,7 +60,7 @@ const phrases = [
 ];
 
 // Названия продуктов для productInfo
-const products = () => [
+const products = [
   `Средство для умывания (50 мл)`,
   `Увлажняющий крем (50 мл)`,
   `Крем для бритья (50 мл)`,
@@ -85,30 +85,47 @@ const getBoolean = () => Math.random() >= 0.5;
 
 // Генерация артикула
 const getArticul = () => {
-  // const letters = (3).forEach((it) => {
-    
-  // });
-
   const letters = `${arr_EN[getRandomNumber(0, arr_EN.length - 1)]}${arr_EN[getRandomNumber(0, arr_EN.length - 1)]}${arr_EN[getRandomNumber(0, arr_EN.length - 1)]}`;
   const numCode = `${getRandomNumber(0, 9)}${getRandomNumber(0, 9)}${getRandomNumber(0, 9)}`;
   return `${letters}-${numCode}`;
 };
 
+// Перемешивает массив
+const shuffleArray = (array) => {
+  const copiedArray = array.slice();
+  for (let i = copiedArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copiedArray[i], copiedArray[j]] = [copiedArray[j], copiedArray[i]];
+  }
+  return copiedArray;
+};
+
+// Возвращает х элементов из массива
+const getElementsFromArray = (array, num) => shuffleArray(array).slice(0, num);
+
+// Возвращает productInfo
+const getProductInfo = () => {
+// getElementsFromArray(products, getRandomNumber(1, 6))
+  console.log('bingo');
+};
+
 // Генерирует объект с данными для карточек
 const getCardData = () => {
+  const category = categories[getRandomNumber(0, categories.length - 1)];
+  const name = names[getRandomNumber(0, names.length - 1)];
   return {
     id: Date.now(),
     group: Categories[groups[getRandomNumber(0, 2)]],
-    category: categories[getRandomNumber(0, categories.length - 1)],
-    name: names[getRandomNumber(0, names.length - 1)],
+    category: category,
+    name: name,
     price: Math.ceil((getRandomNumber(300, 10000) + 1) / 100) * 100,
     bigPicture: ``,
     catalogPicture: ``,
     previews: [],
     articul: getArticul(),
     inStock: getBoolean(),
-    text: `Массив из 1-3 предложений`,
-    productInfo: `Массив из 1-6 элементов`
+    text: getElementsFromArray(phrases, getRandomNumber(2, 5)),
+    productInfo: category.match(/набор/i) ? getElementsFromArray(products, getRandomNumber(2, 6)) : `${category} «${name}»`
   }
 };
 
