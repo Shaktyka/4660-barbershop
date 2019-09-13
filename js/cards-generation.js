@@ -1,14 +1,16 @@
-const Categories = {
-  care: `Средства для ухода`,
-  shavings: `Бритвенные принадлежности`,
-  accessories: `Аксессуары`
-};
+// const Categories = {
+//   care: `Средства для ухода`,
+//   shavings: `Бритвенные принадлежности`,
+//   accessories: `Аксессуары`
+// };
+
+let arr_EN = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
 // Группы
 const groups = [
-  care,
-  shavings,
-  accessories
+  `care`,
+  `shavings`,
+  `accessories`
 ];
 
 // Категории
@@ -37,7 +39,8 @@ const names = [
   `American Crew`,
   `BARBER`,
   `Proraso`,
-  `The Bluebeards`
+  `The Bluebeards`,
+  `Truefit&Hill`
 ];
 
 // Описания (от 2 до 4)
@@ -75,14 +78,20 @@ const products = () => [
 ];
 
 // Генерирует случайное число от min до max вкл.
-const getRandomNumber = (min, max) => min + Math.floor(Math.random() * (max + 1 - min));
+const getRandomNumber = (min, max) => Math.floor(min + Math.random() * (max + 1 - min));
 
 // Возвращает true или false
 const getBoolean = () => Math.random() >= 0.5;
 
 // Генерация артикула
-const getArticul = (name) => {
-  return name;
+const getArticul = () => {
+  // const letters = (3).forEach((it) => {
+    
+  // });
+
+  const letters = `${arr_EN[getRandomNumber(0, arr_EN.length - 1)]}${arr_EN[getRandomNumber(0, arr_EN.length - 1)]}${arr_EN[getRandomNumber(0, arr_EN.length - 1)]}`;
+  const numCode = `${getRandomNumber(0, 9)}${getRandomNumber(0, 9)}${getRandomNumber(0, 9)}`;
+  return `${letters}-${numCode}`;
 };
 
 // Генерирует объект с данными для карточек
@@ -90,15 +99,17 @@ const getCardData = () => {
   return {
     id: Date.now(),
     group: Categories[groups[getRandomNumber(0, 2)]],
-    category: ``,
-    name: ``,
-    price: getRandomNumber(300, 10000),
+    category: categories[getRandomNumber(0, categories.length - 1)],
+    name: names[getRandomNumber(0, names.length - 1)],
+    price: Math.ceil((getRandomNumber(300, 10000) + 1) / 100) * 100,
     bigPicture: ``,
     catalogPicture: ``,
     previews: [],
-    articul: ``,
+    articul: getArticul(),
     inStock: getBoolean(),
     text: `Массив из 1-3 предложений`,
     productInfo: `Массив из 1-6 элементов`
   }
 };
+
+console.log(getCardData());
