@@ -103,11 +103,10 @@ const shuffleArray = (array) => {
 // Возвращает х элементов из массива
 const getElementsFromArray = (array, num) => shuffleArray(array).slice(0, num);
 
-// Возвращает productInfo
-const getProductInfo = () => {
-// getElementsFromArray(products, getRandomNumber(1, 6))
-  console.log('bingo');
-};
+// images
+// каталог: 220х165
+// big 460х498
+// little 140х149    
 
 // Генерирует объект с данными для карточек
 const getCardData = () => {
